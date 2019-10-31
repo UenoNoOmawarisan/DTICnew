@@ -1,6 +1,7 @@
 package jp.ac.shohoku.s18b706.ueno.dtic;
 
 import android.content.Context;
+
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
