@@ -21,6 +21,7 @@ public class MainActivity extends Activity {
                 if(count == 1){
                     // 変更したいレイアウトを取得する
                     LinearLayout layout = findViewById(R.id.op);
+                    // BGM
                     // レイアウトのビューをすべて削除する
                     layout.removeAllViews();
                     // レイアウトをR.layout.sampleに変更する
