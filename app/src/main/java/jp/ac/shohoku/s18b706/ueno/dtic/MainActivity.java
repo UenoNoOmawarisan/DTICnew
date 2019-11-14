@@ -1,6 +1,7 @@
 package jp.ac.shohoku.s18b706.ueno.dtic;
 
 import android.app.Activity;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,6 +9,7 @@ import android.widget.LinearLayout;
 import android.view.View.OnClickListener;
 
 public class MainActivity extends Activity {
+    private MediaPlayer mBgm; //BGM用の変数
     int count = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +23,9 @@ public class MainActivity extends Activity {
                 if(count == 1){
                     // 変更したいレイアウトを取得する
                     LinearLayout layout = findViewById(R.id.op);
-                    // BGM
+
+                    BGM(); //BGMが流れる
+
                     // レイアウトのビューをすべて削除する
                     layout.removeAllViews();
                     // レイアウトをR.layout.sampleに変更する
@@ -50,5 +54,13 @@ public class MainActivity extends Activity {
                 }
             }
         });
+    }
+
+    private void BGM(){ //BGM
+        int bgmResID = this.getResources().getIdentifier("base","raw",
+                "jp.ac.shohoku.s18b706.ueno.dtic");
+        mBgm = MediaPlayer.create(this.getContext(),bgmResID);
+        mBgm.seekTo(0); //先頭に再生位置を設定
+        mBgm.setLooping(true); //ループ再生する
     }
 }
