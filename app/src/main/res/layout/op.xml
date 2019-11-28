@@ -13,6 +13,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:layout_gravity="center_horizontal"
-        android:text="first view"/>
+        android:text="OP view"/>
 
 </LinearLayout>
