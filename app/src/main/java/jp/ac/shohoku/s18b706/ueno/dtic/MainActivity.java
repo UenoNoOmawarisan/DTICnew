@@ -25,13 +25,14 @@ public class MainActivity extends Activity {
                 if(count == 1){
                     // 変更したいレイアウトを取得する
                     LinearLayout layout = findViewById(R.id.op);
-                    KawaiiBGM(); // 可愛いBGM
                     // レイアウトのビューをすべて削除する
                     layout.removeAllViews();
                     // レイアウトをR.layout.sampleに変更する
                     getLayoutInflater().inflate(R.layout.brushing,layout);
+                    KawaiiBGM(); // 可愛いBGM
                     count=2;
                 }else if(count == 2){
+                    mBgm.stop(); // 可愛いBGMストップ
                     LinearLayout layout =  findViewById(R.id.brushing);
                     layout.removeAllViews();
                     getLayoutInflater().inflate(R.layout.angry,layout);
@@ -39,14 +40,17 @@ public class MainActivity extends Activity {
                 }else if(count == 3){
                     LinearLayout layout =  findViewById(R.id.angry);
                     layout.removeAllViews();
-                    getLayoutInflater().inflate(R.layout.stroking,layout);
+                    getLayoutInflater().inflate(R.layout.brushing,layout);
+                    AngryBGM(); // 怒っているBGM
                     count=4;
                 }else if(count == 4){
-                    LinearLayout layout =  findViewById(R.id.stroking);
+                    mBgm.stop(); // 怒っているBGMストップ
+                    LinearLayout layout =  findViewById(R.id.brushing);
                     layout.removeAllViews();
                     getLayoutInflater().inflate(R.layout.eat,layout);
                     count=5;
-                }else if(count == 5){
+                }
+                else if(count == 5){
                     LinearLayout layout =  findViewById(R.id.eat);
                     layout.removeAllViews();
                     getLayoutInflater().inflate(R.layout.op,layout);
@@ -60,6 +64,14 @@ public class MainActivity extends Activity {
         int bgmResID = this.getResources().getIdentifier("kbgm","raw",
                 "jp.ac.shohoku.s18b706.ueno.dtic");
         mBgm = MediaPlayer.create(this, R.raw.kawaiibgm);
+        mBgm.seekTo(0); //先頭に再生位置を設定
+        mBgm.start(); // 音楽再生開始
+        mBgm.setLooping(true); //ループ再生する
+    }
+    private void AngryBGM(){ // 怒っているBGM
+        int bgmResID = this.getResources().getIdentifier("kbgm","raw",
+                "jp.ac.shohoku.s18b706.ueno.dtic");
+        mBgm = MediaPlayer.create(this, R.raw.angrybgm);
         mBgm.seekTo(0); //先頭に再生位置を設定
         mBgm.start(); // 音楽再生開始
         mBgm.setLooping(true); //ループ再生する

@@ -15,4 +15,12 @@
         android:layout_gravity="center_horizontal"
         android:text="OP view"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="テキストを入れる"
+        android:textAlignment="center" />
+
 </LinearLayout>
