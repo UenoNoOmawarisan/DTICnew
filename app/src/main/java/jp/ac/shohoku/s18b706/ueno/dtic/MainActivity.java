@@ -2,73 +2,104 @@ package jp.ac.shohoku.s18b706.ueno.dtic;
 
 import android.app.Activity;
 import android.media.MediaPlayer;
-import android.media.SoundPool;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.view.View.OnClickListener;
+import android.widget.Switch;
 
 public class MainActivity extends Activity {
     private MediaPlayer mBgm; //BGM用の変数
-
-    int mySoundID;
-    int oto;
-    private SoundPool soundPool;  //ボタンを押したときの効果音
-
-    int count = 1;
+    private Switch switch1;
+//    int count = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view);
-        // ボタンを押したときにイベントを取得できるようにする
-        Button button1 = findViewById(R.id.button1);
-        button1.setOnClickListener(new OnClickListener(){
+
+        final Button opbutton = findViewById(R.id.opbutton); // op.xmlの★ボタン
+        opbutton.setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick(View v){
-                if(count == 1){
-
-                    Button button = findViewById(R.id.button);
-                    button.setOnClickListener(this);
-                    oto = getResources().getIdentifier("star",
-                            "raw",getPackageName());
-
-
-                    // 変更したいレイアウトを取得する
-                    LinearLayout layout = findViewById(R.id.op);
-                    // レイアウトのビューをすべて削除する
-                    layout.removeAllViews();
-                    // レイアウトをR.layout.sampleに変更する
-                    getLayoutInflater().inflate(R.layout.brushing,layout);
-                    KawaiiBGM(); // 可愛いBGMスタート
-                    count=2;
-                }else if(count == 2){
-                    mBgm.stop(); // 可愛いBGMストップ
-                    LinearLayout layout =  findViewById(R.id.brushing);
-                    layout.removeAllViews();
-                    getLayoutInflater().inflate(R.layout.angry,layout);
-                    count=3;
-                }else if(count == 3){
-                    LinearLayout layout =  findViewById(R.id.angry);
-                    layout.removeAllViews();
-                    getLayoutInflater().inflate(R.layout.brushing,layout);
-                    AngryBGM(); // 怒っているBGMスタート
-                    count=4;
-                }else if(count == 4){
-                    mBgm.stop(); // 怒っているBGMストップ
-                    LinearLayout layout =  findViewById(R.id.brushing);
-                    layout.removeAllViews();
-                    getLayoutInflater().inflate(R.layout.eat,layout);
-                    count=5;
-                }
-                else if(count == 5){
-                    LinearLayout layout =  findViewById(R.id.eat);
-                    layout.removeAllViews();
-                    getLayoutInflater().inflate(R.layout.op,layout);
-                    count=1;
-                }
+            public void onClick(View view) {
+                starBGM(); // ★の効果音
+                new Handler().postDelayed(new Runnable() { // 画面切り替えの遅延
+                    @Override
+                    public void run() {
+                        LinearLayout layout = findViewById(R.id.op); // 変更したいレイアウトを取得する
+                        layout.removeAllViews(); // レイアウトのビューをすべて削除する
+                        getLayoutInflater().inflate(R.layout.brushing,layout); // レイアウトをR.layout.brushingに変更する
+                        KawaiiBGM(); // 可愛いBGMスタート
+                    }
+                },1500);
             }
         });
+
+
+//        final Switch Bswitch = findViewById(R.id.bruswitch);
+//        Bswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if(isChecked == true){
+//                    mBgm.stop(); // 可愛いBGMストップ
+//                    FrameLayout layout2 = findViewById(R.id.brushing);
+//                    layout2.removeAllViews();
+//                    getLayoutInflater().inflate(R.layout.angry,layout2);
+//                    AngryBGM(); // 怒った時のBGMスタート
+//                }else{
+//                    // 何もしない
+//                }
+//            }
+//        });
+
+
+
+        // ボタンを押したときにイベントを取得できるようにする
+//        final Button button1 = findViewById(R.id.button1);
+//        button1.setOnClickListener(new OnClickListener(){
+//            @Override
+//            public void onClick(View v){
+//                if(count == 1){
+//                    // 変更したいレイアウトを取得する
+//                    LinearLayout layout = findViewById(R.id.op);
+//                    // レイアウトのビューをすべて削除する
+//                    layout.removeAllViews();
+//                    // レイアウトをR.layout.sampleに変更する
+//                    getLayoutInflater().inflate(R.layout.brushing,layout);
+//                    KawaiiBGM(); // 可愛いBGMスタート
+//                    count=2;
+//                }else if(count == 2){
+//                    mBgm.stop(); // 可愛いBGMストップ
+//                    LinearLayout layout =  findViewById(R.id.brushing);
+//                    layout.removeAllViews();
+//                    getLayoutInflater().inflate(R.layout.angry,layout);
+//                    AngryBGM(); // 怒った時のBGMスタート
+//                    count=3;
+//                }else if(count == 3){
+//                    mBgm.stop(); // 怒った時のBGMストップ
+//                    LinearLayout layout =  findViewById(R.id.angry);
+//                    layout.removeAllViews();
+//                    getLayoutInflater().inflate(R.layout.brushing,layout);
+//                    BrushingBGM(); // ブラッシングする時のBGMスタート
+//                    count=4;
+//                }else if(count == 4){
+//                    mBgm.stop(); // ブラッシングする時のBGMストップ
+//                    LinearLayout layout =  findViewById(R.id.brushing);
+//                    layout.removeAllViews();
+//                    getLayoutInflater().inflate(R.layout.eat,layout);
+//                    BadendBGM();  // 死んだBGM
+//                    BadendBGM2(); // 死んだBGM（くちゃくちゃ）
+//                    count=5;
+//                } else if(count == 5){
+//                    mBgm.stop(); // 死んだBGMストップ
+//                    LinearLayout layout =  findViewById(R.id.eat);
+//                    layout.removeAllViews();
+//                    getLayoutInflater().inflate(R.layout.op,layout);
+//                    count=1;
+//                }
+//            }
+//        });
     }
 
     private void KawaiiBGM(){ // 可愛いBGM
@@ -79,17 +110,43 @@ public class MainActivity extends Activity {
         mBgm.start(); // 音楽再生開始
         mBgm.setLooping(true); //ループ再生する
     }
-    private void AngryBGM(){ // 怒っているBGM
+    private void AngryBGM(){ // 怒った時のBGM
         int bgmResID = this.getResources().getIdentifier("kbgm","raw",
                 "jp.ac.shohoku.s18b706.ueno.dtic");
         mBgm = MediaPlayer.create(this, R.raw.angrybgm);
         mBgm.seekTo(0);
         mBgm.start();
+        //mBgm.setLooping(true); ループ再生はしない
+    }
+    private void BrushingBGM(){ // ブラッシングする時のBGM
+        int bgmResID = this.getResources().getIdentifier("kbgm","raw",
+                "jp.ac.shohoku.s18b706.ueno.dtic");
+        mBgm = MediaPlayer.create(this, R.raw.brushingbgm);
+        mBgm.seekTo(0);
+        mBgm.start();
         mBgm.setLooping(true);
     }
-
-
-    private void star(){ // ボタンを押すとキラキラが流れる
-
+    private void BadendBGM(){ // 死んだBGM
+        int bgmResID = this.getResources().getIdentifier("kbgm","raw",
+                "jp.ac.shohoku.s18b706.ueno.dtic");
+        mBgm = MediaPlayer.create(this, R.raw.badendbgm);
+        mBgm.seekTo(0);
+        mBgm.start();
+        //mBgm.setLooping(true); ループ再生はしない
+    }
+    private void BadendBGM2(){ // 死んだBGM2（くちゃくちゃ）
+        int bgmResID = this.getResources().getIdentifier("kbgm","raw",
+                "jp.ac.shohoku.s18b706.ueno.dtic");
+        mBgm = MediaPlayer.create(this, R.raw.badendbgm2);
+        mBgm.seekTo(0);
+        mBgm.start();
+        mBgm.setLooping(true);
+    }
+    private void starBGM(){ // ★効果音
+        int bgmResID = this.getResources().getIdentifier("kbgm","raw",
+                "jp.ac.shohoku.s18b706.ueno.dtic");
+        mBgm = MediaPlayer.create(this, R.raw.star);
+        mBgm.seekTo(0);
+        mBgm.start();
     }
 }
