@@ -14,7 +14,7 @@
         android:text="【あそびかた】"
         android:textAlignment="center"
         android:textColor="#5B3F5F"
-        android:textSize="55sp"
+        android:textSize="60sp"
         android:textStyle="bold" />
 
     <TextView
@@ -25,19 +25,32 @@
         android:text="なでたり,\nブラッシングして\n犬を喜ばせよう!"
         android:textAlignment="center"
         android:textColor="#5B3F5F"
-        android:textSize="40sp"
+        android:textSize="45sp"
         android:textStyle="bold" />
 
-    <Button
+<!--    押した感が出るボタン-->
+    <jp.ac.shohoku.s18b706.ueno.dtic.PushButton
         android:id="@+id/opbutton"
         android:layout_gravity="center"
-        android:layout_marginTop="20sp"
-        android:background="@android:drawable/btn_star_big_on"
-        android:layout_width="320dp"
-        android:layout_height="320dp"
+        android:layout_marginTop="40sp"
+        android:background="@raw/starimage"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
         android:text="START"
         android:textColor="#C05ACA"
         android:textSize="40sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="60sp"
+        android:text="★STARTを押すとゲームが始まるよ！"
+        android:textAlignment="center"
+        android:textColor="#5B3F5F"
+        android:textSize="25sp"
         android:textStyle="bold"/>
 
 </LinearLayout>

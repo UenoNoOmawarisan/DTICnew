@@ -13,11 +13,19 @@
         android:src="@raw/kawaii"
         android:scaleType="centerCrop"/>
 
-    <Switch
-        android:id="@+id/bruswitch"
+
+<!--    ボタンだと出来る？出来ねぇよ！！-->
+    <Button
+        android:id="@+id/brubutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:checked="false"
-        android:text="なでるモード"/>
+        android:text="なでる"/>
+
+<!--    <Switch-->
+<!--        android:id="@+id/bruswitch"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:checked="false"-->
+<!--        android:text="なでるモード"/>-->
 
 </FrameLayout>

@@ -1,25 +1,28 @@
 package jp.ac.shohoku.s18b706.ueno.dtic;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.view.View.OnClickListener;
 import android.widget.Switch;
+import android.widget.ToggleButton;
 
 public class MainActivity extends Activity {
     private MediaPlayer mBgm; //BGM用の変数
-    private Switch switch1;
-//    int count = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view);
 
-        final Button opbutton = findViewById(R.id.opbutton); // op.xmlの★ボタン
+        Button opbutton = findViewById(R.id.opbutton); // op.xmlの★ボタン
         opbutton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -37,25 +40,7 @@ public class MainActivity extends Activity {
         });
 
 
-//        final Switch Bswitch = findViewById(R.id.bruswitch);
-//        Bswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                if(isChecked == true){
-//                    mBgm.stop(); // 可愛いBGMストップ
-//                    FrameLayout layout2 = findViewById(R.id.brushing);
-//                    layout2.removeAllViews();
-//                    getLayoutInflater().inflate(R.layout.angry,layout2);
-//                    AngryBGM(); // 怒った時のBGMスタート
-//                }else{
-//                    // 何もしない
-//                }
-//            }
-//        });
 
-
-
-        // ボタンを押したときにイベントを取得できるようにする
 //        final Button button1 = findViewById(R.id.button1);
 //        button1.setOnClickListener(new OnClickListener(){
 //            @Override
