@@ -14,13 +14,13 @@ import android.view.View.OnClickListener;
 import android.widget.Switch;
 import android.widget.ToggleButton;
 
-public class MainActivity extends Activity {
+public class MainActivityOP extends Activity {
     private MediaPlayer mBgm; //BGM用の変数
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view);
+        setContentView(R.layout.op);
 
         Button opbutton = findViewById(R.id.opbutton); // op.xmlの★ボタン
         opbutton.setOnClickListener(new OnClickListener() {
